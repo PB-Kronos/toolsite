@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
+import { toast } from 'sonner';
 
 const ExportControls = () => {
   const [exportFormat, setExportFormat] = useState('mp3');
@@ -9,20 +10,23 @@ const ExportControls = () => {
 
   const handleExport = async () => {
     setIsExporting(true);
-    // Export logic here
-    setIsExporting(false);
+    // Simulate export process
+    setTimeout(() => {
+      setIsExporting(false);
+      toast.success('Export completed successfully!');
+    }, 2000);
   };
 
   return (
-    <Card className="mt-6">
-      <h2 className="text-xl mb-4">Export</h2>
+    <Card className="p-4">
+      <h2 className="text-lg font-semibold mb-4">Export</h2>
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium mb-2">Format</label>
           <select
             value={exportFormat}
             onChange={(e) => setExportFormat(e.target.value)}
-            className="w-full px-3 py-2 border rounded-lg bg-gray-50 dark:bg-gray-800"
+            className="w-full px-3 py-2 border rounded-lg bg-background"
           >
             <option value="mp3">MP3</option>
             <option value="wav">WAV</option>
@@ -35,14 +39,14 @@ const ExportControls = () => {
           <select
             value={exportQuality}
             onChange={(e) => setExportQuality(e.target.value)}
-            className="w-full px-3 py-2 border rounded-lg bg-gray-50 dark:bg-gray-800"
+            className="w-full px-3 py-2 border rounded-lg bg-background"
           >
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+            <option value="low">Low (128kbps)</option>
+            <option value="medium">Medium (256kbps)</option>
+            <option value="high">High (320kbps)</option>
           </select>
         </div>
-        <Button onClick={handleExport} disabled={isExporting}>
+        <Button onClick={handleExport} disabled={isExporting} className="w-full">
           {isExporting ? 'Exporting...' : 'Export'}
         </Button>
       </div>

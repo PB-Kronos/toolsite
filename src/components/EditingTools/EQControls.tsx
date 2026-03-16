@@ -1,54 +1,62 @@
-import React from 'react';
-import { useDrag, useDrop } from 'react-dnd';
-import { useAudioContext } from 'react-audio-context';
+'use client';
 
-const EQControls = () => {
-  const [audio, setAudio] = useState(null);
-  const [frequency, setFrequency] = useState(1000);
-  const [gain, setGain] = useState(0);
-  const [isEditing, setIsEditing] = useState(false);
+import { useState } from 'react';
+import { Card } from '../ui/card';
 
-  const [audioContext, setAudioContext] = useAudioContext();
-
-  useEffect(() => {
-    if (audio) {
-      audioContext.setAudioBuffer(audio);
-    }
-  }, [audio]);
-
-  const handleEQChange = (e) => {
-    setFrequency(e.nativeEvent.offsetX);
-    setIsEditing(true);
-  };
-
-  const handleGainChange = (e) => {
-    setGain(e.nativeEvent.offsetX);
-    setIsEditing(true);
-  };
+export function EQControls() {
+  const [eqValues, setEqValues] = useState({
+    low: 0,
+    mid: 0,
+    high: 0,
+  });
 
   return (
-    <div className="eq-controls p-4 bg-gray-800 text-white">
-      <h2 className="text-xl mb-4">Equalizer</h2>
-      <div className="flex flex-col space-y-2">
-        <div className="flex items-center space-x-2">
-          <div className="flex-1 relative h-4 bg-gray-700 rounded-lg shadow-sm cursor-grab">
-            <div
-              ref={ref}
-              className="absolute inset-0 bg-gray-600 rounded-lg h-full w-full"
-            />
+    <Card className="p-4">
+      <h2 className="text-lg font-semibold mb-4">Equalizer</h2>
+      <div className="space-y-4">
+        <div>
+          <div className="flex justify-between text-sm mb-2">
+            <span>Low</span>
+            <span>{eqValues.low} dB</span>
           </div>
+          <input
+            type="range"
+            min="-12"
+            max="12"
+            value={eqValues.low}
+            onChange={(e) => setEqValues({...eqValues, low: parseInt(e.target.value)})}
+            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+          />
         </div>
-        <div className="flex items-center space-x-2">
-          <div className="flex-1 relative h-4 bg-gray-700 rounded-lg shadow-sm cursor-grab">
-            <div
-              ref={ref}
-              className="absolute inset-0 bg-gray-600 rounded-lg h-full w-full"
-            />
+        <div>
+          <div className="flex justify-between text-sm mb-2">
+            <span>Mid</span>
+            <span>{eqValues.mid} dB</span>
           </div>
+          <input
+            type="range"
+            min="-12"
+            max="12"
+            value={eqValues.mid}
+            onChange={(e) => setEqValues({...eqValues, mid: parseInt(e.target.value)})}
+            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+          />
+        </div>
+        <div>
+          <div className="flex justify-between text-sm mb-2">
+            <span>High</span>
+            <span>{eqValues.high} dB</span>
+          </div>
+          <input
+            type="range"
+            min="-12"
+            max="12"
+            value={eqValues.high}
+            onChange={(e) => setEqValues({...eqValues, high: parseInt(e.target.value)})}
+            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+          />
         </div>
       </div>
-    </div>
+    </Card>
   );
-};
-
-export default EQControls;
+}

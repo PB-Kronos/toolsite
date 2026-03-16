@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { toast } from 'sonner';
 
-const ExportControls = () => {
+export function ExportControls() {
   const [exportFormat, setExportFormat] = useState('mp3');
   const [exportQuality, setExportQuality] = useState('high');
   const [isExporting, setIsExporting] = useState(false);
 
   const handleExport = async () => {
     setIsExporting(true);
-    // Simulate export process
     setTimeout(() => {
       setIsExporting(false);
       toast.success('Export completed successfully!');
@@ -52,6 +53,4 @@ const ExportControls = () => {
       </div>
     </Card>
   );
-};
-
-export default ExportControls;
+}

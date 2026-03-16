@@ -1,9 +1,11 @@
+'use client';
+
 import React from 'react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { HelpCircle, Book, MessageCircle } from 'lucide-react';
 
-const HelpPanel = () => {
+export function HelpPanel() {
   return (
     <Card className="p-4">
       <h2 className="text-lg font-semibold mb-4">Help & Support</h2>
@@ -23,6 +25,4 @@ const HelpPanel = () => {
       </div>
     </Card>
   );
-};
-
-export default HelpPanel;
+}

@@ -1,9 +1,11 @@
+'use client';
+
 import React from 'react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { FileAudio, FileVideo, FolderOpen } from 'lucide-react';
 
-const WelcomePanel = () => {
+export function WelcomePanel() {
   return (
     <Card className="p-6">
       <div className="text-center space-y-4">
@@ -31,6 +33,4 @@ const WelcomePanel = () => {
       </div>
     </Card>
   );
-};
-
-export default WelcomePanel;
+}

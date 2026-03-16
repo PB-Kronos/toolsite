@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { FolderOpen } from 'lucide-react';
 
-const RecentProjects = () => {
+export function RecentProjects() {
   const [recentProjects] = useState([
     { name: 'Podcast Episode 1', date: '2024-01-15' },
     { name: 'Music Track Mix', date: '2024-01-14' },
@@ -34,6 +36,4 @@ const RecentProjects = () => {
       </div>
     </Card>
   );
-};
-
-export default RecentProjects;
+}

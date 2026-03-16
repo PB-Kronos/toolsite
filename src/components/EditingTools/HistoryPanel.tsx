@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { Undo2, Redo2 } from 'lucide-react';
 
-const HistoryPanel = () => {
+export function HistoryPanel() {
   const [history, setHistory] = useState([
     'Project created',
     'File imported: audio.mp3',
@@ -63,6 +65,4 @@ const HistoryPanel = () => {
       </div>
     </Card>
   );
-};
-
-export default HistoryPanel;
+}

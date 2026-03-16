@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import { Card } from '../ui/card';
 
-const AnalyticsPanel = () => {
+export function AnalyticsPanel() {
   const [analyticsData] = useState({
     duration: '3:45',
     fileSize: '12.5 MB',
@@ -37,6 +39,4 @@ const AnalyticsPanel = () => {
       </div>
     </Card>
   );
-};
-
-export default AnalyticsPanel;
+}

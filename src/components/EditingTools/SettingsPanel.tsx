@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+'use client';
+
+import { useState } from 'react';
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
 
-const SettingsPanel = () => {
+export function SettingsPanel() {
   const [settings, setSettings] = useState({
     autoSave: true,
     hardwareAcceleration: true,
@@ -47,6 +49,4 @@ const SettingsPanel = () => {
       </div>
     </Card>
   );
-};
-
-export default SettingsPanel;
+}

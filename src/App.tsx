@@ -9,7 +9,7 @@ import { Analytics } from "@vercel/analytics/next";
 
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
+  <QueryClientProvider client={QueryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />

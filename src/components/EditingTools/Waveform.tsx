@@ -1,21 +1,17 @@
 import React from 'react';
 
-const Waveform = ({ waveformData }) => {
+export function Waveform() {
   return (
-    <svg className="w-full h-full" viewBox="0 0 1000 100">
-      {waveformData.map((point, index) => (
-        <line
-          key={index}
-          x1={index * 10}
-          y1={50 + point * 50}
-          x2={index * 10}
-          y2={50 - point * 50}
-          stroke="currentColor"
-          strokeWidth="2"
-        />
-      ))}
-    </svg>
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="flex items-end gap-1 h-16">
+        {Array.from({ length: 50 }).map((_, i) => (
+          <div
+            key={i}
+            className="w-1 bg-primary/30 rounded-full"
+            style={{ height: `${Math.random() * 100}%` }}
+          />
+        ))}
+      </div>
+    </div>
   );
-};
-
-export default Waveform;
+}

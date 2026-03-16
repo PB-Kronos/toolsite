@@ -1,19 +1,18 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+// Audio/Video File Conversion and Editing Platform
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './Dashboard';
+import NotFound from './NotFound';
 
-import { MadeWithDyad } from "@/components/made-with-dyad";
-
-const Index = () => {
+const App = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">
-          Start building your amazing project here!
-        </p>
-      </div>
-      <MadeWithDyad />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="*" element={<Dashboard />} />
+        <Route path="404" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 };
 
-export default Index;
+export default App;
